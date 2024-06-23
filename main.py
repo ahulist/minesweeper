@@ -417,7 +417,7 @@ def rightClick(buttons, button, upper_panel, game_table, icons):
     global number_of_hitted_mines
     global number_of_mines
 
-    if button.cget == icons["flaga"]:
+    if button.cget('image') == str(icons["flaga"]):
         button["image"] = icons["tlo"]
         number_of_flags += 1
         number_of_mines += 1
