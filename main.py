@@ -15,13 +15,18 @@ if_end_game = False
 
 score_save = ""
 
+# CONSTANTS:
 ASSETS_FILEPATH = "./assets/"
+RESULTS_FILEPATH = "wyniki.txt"
 
-with open("wyniki.txt", mode="r") as score_txt:
-    # Opens txt file with scoreboard
+try:
+    with open(RESULTS_FILEPATH, mode="r") as score_txt:
+        # Opens txt file with scoreboard
 
-    for line in sorted(score_txt):
-        score_save += line
+        for line in sorted(score_txt):
+            score_save += line
+except FileNotFoundError:
+    open(RESULTS_FILEPATH, "a").close()
 
 
 def window():
@@ -348,7 +353,7 @@ def ifGameWon(buttons, game_table):
 
     if_end_game = True
 
-    with open("wyniki.txt", mode="a+") as save:
+    with open(RESULTS_FILEPATH, mode="a+") as save:
         save.write(
             "Wygrana gra z czasem: "
             + str(time)
@@ -465,7 +470,7 @@ def restartGame(game, upper_panel, icons):
     update_number_of_mines(upper_panel[0])
 
     global score_save
-    with open("wyniki.txt", mode="r") as scores_txt:
+    with open(RESULTS_FILEPATH, mode="r") as scores_txt:
         for line in sorted(scores_txt):
             score_save += line
 
