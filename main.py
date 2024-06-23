@@ -15,6 +15,8 @@ if_end_game = False
 
 score_save = ""
 
+ASSETS_FILEPATH = "./assets/"
+
 with open("wyniki.txt", mode="r") as score_txt:
     # Opens txt file with scoreboard
 
@@ -290,17 +292,20 @@ def loadIcons():
 
     icons = {}
 
-    icons["cyfry"] = [tk.PhotoImage(file=str(i) + ".png") for i in range(1, 9)]
-    icons["buzki"] = [
-        tk.PhotoImage(file="buzka" + str(i) + ".png") for i in range(1, 5)
+    icons["cyfry"] = [
+        tk.PhotoImage(file=ASSETS_FILEPATH + str(i) + ".png") for i in range(1, 9)
     ]
-    icons["flaga"] = tk.PhotoImage(file="flaga.png")
+    icons["buzki"] = [
+        tk.PhotoImage(file=ASSETS_FILEPATH + "buzka" + str(i) + ".png")
+        for i in range(1, 5)
+    ]
+    icons["flaga"] = tk.PhotoImage(file=ASSETS_FILEPATH + "flaga.png")
     icons["miny"] = [
-        tk.PhotoImage(file="mina.png"),
-        tk.PhotoImage(file="pierwsza.png"),
+        tk.PhotoImage(file=ASSETS_FILEPATH + "mina.png"),
+        tk.PhotoImage(file=ASSETS_FILEPATH + "pierwsza.png"),
     ]
 
-    icons["tlo"] = [tk.PhotoImage(file="tlo.png")]
+    icons["tlo"] = [tk.PhotoImage(file=ASSETS_FILEPATH + "tlo.png")]
     return icons
 
 
