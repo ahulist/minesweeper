@@ -1,6 +1,12 @@
 import tkinter as tk
 import random
 
+# TODO ideas:
+# - standardize naming to snake case
+# - move hardcoded values to uppercase constants
+# - don't use `global` :)
+# - I'd use `numpy` to deal with performance issues
+
 N = 15
 M = 30
 
