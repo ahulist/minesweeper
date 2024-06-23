@@ -1,9 +1,15 @@
+"""
+@file main.py
+@brief This is an example Python file for Doxygen integration.
+"""
+
 import tkinter as tk
 import random
 
 # TODO ideas:
-# - standardize naming to snake case
+# - standardize naming to snake case and use only english
 # - move hardcoded values to uppercase constants
+# - fill in the documentation
 # - don't use `global` :)
 # - I'd use `numpy` to deal with performance issues
 
@@ -36,7 +42,9 @@ except FileNotFoundError:
 
 
 def window():
-    # Main root for window
+    """
+    @brief Main root for window.
+    """
 
     root = tk.Tk()
     root.geometry("390x250")
@@ -46,7 +54,11 @@ def window():
 
 
 def startWindow(game_difficulty):
-    # Window suitable for starting scene where you choose game difficulty and can see a scoreboard
+    """
+    @brief Window suitable for starting scene where you choose game difficulty and can see a scoreboard.
+    @param game_difficulty tkinter.Frame for difficulty choice.
+    @return array [Label, Button, Button, Button] of initial panel
+    """
 
     game_difficulty.pack(fill="both", expand=1)
     game.forget()
