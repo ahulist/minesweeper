@@ -15,7 +15,7 @@ if_end_game = False
 
 score_save = ""
 
-with open("wyniki.txt", mode='r') as score_txt:
+with open("wyniki.txt", mode="r") as score_txt:
     # Opens txt file with scoreboard
 
     for line in sorted(score_txt):
@@ -26,7 +26,7 @@ def window():
     # Main root for window
 
     root = tk.Tk()
-    root.geometry('390x250')
+    root.geometry("390x250")
     root.title("saper")
 
     return root
@@ -35,10 +35,10 @@ def window():
 def startWindow(game_difficulty):
     # Window suitable for starting scene where you choose game difficulty and can see a scoreboard
 
-    game_difficulty.pack(fill='both', expand=1)
+    game_difficulty.pack(fill="both", expand=1)
     game.forget()
     scores.forget()
-    root.geometry('390x250')
+    root.geometry("390x250")
     text = tk.Label(game_difficulty, font=("Digital-7", 20))
     text.grid(row=0, column=0, pady=10, padx=10)
     text["text"] = "Wybierz poziom trudności gry"
@@ -70,8 +70,8 @@ def easyDifficulty():
     number_of_mines = 20
     choose_difficulty.forget()
     scores.forget()
-    game.pack(fill='both', expand=1)
-    root.geometry('850x550')
+    game.pack(fill="both", expand=1)
+    root.geometry("850x550")
     upper_panel[1]["image"] = icons["buzki"][0]
     buttons = board(game, upper_panel, icons)
 
@@ -93,8 +93,8 @@ def mediumDifficulty():
     number_of_mines = 45
     choose_difficulty.forget()
     scores.forget()
-    game.pack(fill='both', expand=1)
-    root.geometry('850x550')
+    game.pack(fill="both", expand=1)
+    root.geometry("850x550")
     upper_panel[1]["image"] = icons["buzki"][0]
     buttons = board(game, upper_panel, icons)
 
@@ -116,8 +116,8 @@ def hardDifficulty():
     number_of_mines = 70
     choose_difficulty.forget()
     scores.forget()
-    game.pack(fill='both', expand=1)
-    root.geometry('850x550')
+    game.pack(fill="both", expand=1)
+    root.geometry("850x550")
     upper_panel[1]["image"] = icons["buzki"][0]
     buttons = board(game, upper_panel, icons)
 
@@ -137,7 +137,7 @@ def scoreTabel(scores, score_save):
 
     game.forget()
     scores.forget()
-    choose_difficulty.pack(fill='both', expand=1)
+    choose_difficulty.pack(fill="both", expand=1)
     text = tk.Label(scores, font=("Digital-7", 10))
     text.grid(pady=10, padx=20)
     text["text"] = score_save
@@ -153,19 +153,19 @@ def scoreTabel(scores, score_save):
 def showScore():
     # Button to change from starting window to scoreboard window
 
-    scores.pack(fill='both', expand=1)
+    scores.pack(fill="both", expand=1)
     game.forget()
     choose_difficulty.forget()
-    root.geometry('300x500')
+    root.geometry("300x500")
 
 
 def showStartingWindow():
     # Responsible for changing screen from game or scoreboard to starting window with difficulty options
 
-    choose_difficulty.pack(fill='both', expand=1)
+    choose_difficulty.pack(fill="both", expand=1)
     game.forget()
     scores.forget()
-    root.geometry('390x250')
+    root.geometry("390x250")
 
 
 def upperPanel(game, icons):
@@ -244,7 +244,7 @@ def gameTable():
         y = random.randint(0, N - 1)
 
         if game_table[y][x] == 0:
-            game_table[y][x] = 'x'
+            game_table[y][x] = "x"
             l_min -= 1
 
     for i in range(N):
@@ -276,6 +276,7 @@ def update_number_of_mines(count_mines):
     # Sets number of mines in the upper panel
 
     count_mines["text"] = "0" * (4 - len(str(number_of_mines))) + str(number_of_mines)
+
 
 def normalFace(smiley):
     # Function to place smiley face on the upper panel
@@ -323,8 +324,8 @@ def gameLost(buttons, game_table, icons):
     for i in range(N):
         for j in range(M):
             if (
-                    isinstance(buttons[i * M + j], tk.Button)
-                    and buttons[i * M + j]["state"] != "disabled"
+                isinstance(buttons[i * M + j], tk.Button)
+                and buttons[i * M + j]["state"] != "disabled"
             ):
                 buttons[i * M + j]["state"] = "disabled"
                 buttons[i * M + j].unbind("<Button-1>")
@@ -342,15 +343,20 @@ def ifGameWon(buttons, game_table):
 
     if_end_game = True
 
-    with open("wyniki.txt", mode='a+') as save:
+    with open("wyniki.txt", mode="a+") as save:
         save.write(
-            "Wygrana gra z czasem: " + str(time) + " Liczba min: " + str(number_of_mines) + "\n")
+            "Wygrana gra z czasem: "
+            + str(time)
+            + " Liczba min: "
+            + str(number_of_mines)
+            + "\n"
+        )
 
     for i in range(N):
         for j in range(M):
             if (
-                    isinstance(buttons[i * M + j], tk.Button)
-                    and buttons[i * M + j]["state"] != "disabled"
+                isinstance(buttons[i * M + j], tk.Button)
+                and buttons[i * M + j]["state"] != "disabled"
             ):
                 buttons[i * M + j]["state"] = "disabled"
                 buttons[i * M + j].unbind("<Button-1>")
@@ -376,8 +382,8 @@ def updateButtons(buttons, button, index, field, game_table, icons):
 
             for x, y in neighbors:
                 if (
-                        isinstance(buttons[y * M + x], tk.Button)
-                        and buttons[y * M + x]["state"] != "disabled"
+                    isinstance(buttons[y * M + x], tk.Button)
+                    and buttons[y * M + x]["state"] != "disabled"
                 ):
                     updateButtons(
                         buttons,
@@ -417,7 +423,7 @@ def rightClick(buttons, button, upper_panel, game_table, icons):
     global number_of_hitted_mines
     global number_of_mines
 
-    if button.cget('image') == str(icons["flaga"]):
+    if button.cget("image") == str(icons["flaga"]):
         button["image"] = icons["tlo"]
         number_of_flags += 1
         number_of_mines += 1
@@ -454,14 +460,14 @@ def restartGame(game, upper_panel, icons):
     update_number_of_mines(upper_panel[0])
 
     global score_save
-    with open("wyniki.txt", mode='r') as scores_txt:
+    with open("wyniki.txt", mode="r") as scores_txt:
         for line in sorted(scores_txt):
             score_save += line
 
     startWindow(choose_difficulty)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Main to activate functions for game to start and work
     root = window()
 
