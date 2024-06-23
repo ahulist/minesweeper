@@ -227,8 +227,8 @@ def where_neighbors(table, x, y):
     for i in range(-1, 2):
         for j in range(-1, 2):
             if not (i == 0 and j == 0):
-                if y + i >= 0 and y + i < N:
-                    if x + j >= 0 and x + j < M:
+                if 0 <= y + i < N:
+                    if 0 <= x + j < M:
                         neighbors.append((x + j, y + i))
 
     return neighbors
